@@ -17,13 +17,13 @@ mat-list-item.chart-list-item {
   margin-bottom: 1rem;
 }
 
-//Ladedarstellung
+//Loader presentation
 .loader {
-  //Zentriert den Loader
+  //Loader position
   position: absolute;
   left: 35%;
   top: 8%;
-  //Dicke des Rings und des Kreisenden
+  //Thickness of the circle and the circling
   border: 5px solid #f3f3f3; /* Light grey */
   border-top: 5px solid #3498db; /* Blue */
   border-radius: 50%;
@@ -31,12 +31,12 @@ mat-list-item.chart-list-item {
   height: 20px;
   animation: spin 2s linear infinite;
 }
-//Animation des Drehens
+//Circling animation
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-//Text zentrieren und positionieren
+//Text positioning
 #loadText {
   text-align: center;
   position: absolute;

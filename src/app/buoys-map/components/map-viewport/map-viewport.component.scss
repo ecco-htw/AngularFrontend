@@ -6,6 +6,13 @@
   right: 0;
 }
 
+//Height, width and position of the sidebar
+.mat-sidenav {
+  width: 20%;
+  height: 90%;
+  top: 10%;
+}
+
 .sidenav-button-container {
   text-align: right;
   padding: 0.25rem;
@@ -14,4 +21,3 @@
 
   }
 }
-
