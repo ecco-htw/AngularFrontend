@@ -8,6 +8,7 @@ import { EsriOceanBasemapTilesLayerService } from '../../services/leaflet/layers
 import { GlifyMarkersLayerService } from '../../services/leaflet/layers/glify-markers-layer.service';
 import { HeatMapLayerService } from '../../services/leaflet/layers/heat-map-layer.service';
 import { LeafletService } from '../../services/leaflet/leaflet.service';
+import { PinMarkerService } from '../../services/leaflet/layers/pin-marker.service';
 
 
 @Component({
@@ -26,24 +27,30 @@ export class MapComponent implements OnInit {
     private esriOceanBasemapTilesLayerService: EsriOceanBasemapTilesLayerService,
     private heatMapLayer: HeatMapLayerService,
     private markersLayerService: GlifyMarkersLayerService,
-    private antPathLayerService: AntPathLayerService
+    private antPathLayerService: AntPathLayerService,
+    private pinMarkerService: PinMarkerService
   ) {
     this.buoysMapService.loadBuoys();
-    this.markersLayerService.onClick((e, point, xy) => this.openBuoyDetails(point['id']));
-    this.markersLayerService.onNoPointClick(() => this.closeBuoyDetails());
+   
+    this.pinMarkerService.onClick((point) => this.openBuoyDetails(point['id']));
+    this.pinMarkerService.onNoPointClick(() => this.closeBuoyDetails());
+
+   // this.markersLayerService.onClick((e, point, xy) => this.openBuoyDetails(point['id']));
+   // this.markersLayerService.onNoPointClick(() => this.closeBuoyDetails());
   }
 
 
   ngOnInit() {
     this.leafletService.init(this.mapContainer.nativeElement);
-
+    this.pinMarkerService.init();
     this.esriOceanBasemapTilesLayerService.init();
-    this.markersLayerService.init();
+    //this.markersLayerService.init();
     this.antPathLayerService.init();
     this.heatMapLayer.init();
   }
 
   openBuoyDetails(id: ID) {
+    //console.log(id);
     this.router.navigate(['/buoy', id, 'details']);
   }
 
