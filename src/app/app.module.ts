@@ -9,6 +9,7 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
+import {BuoysMapModule} from './buoys-map/buoys-map.module';
 
 @NgModule({
   declarations: [
@@ -19,9 +20,10 @@ import { CoreModule } from './core/core.module';
     CoreModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     AkitaNgRouterStoreModule.forRoot(),
-    environment.production ? [] : AkitaNgDevtools.forRoot()
+    environment.production ? [] : AkitaNgDevtools.forRoot(),
+    BuoysMapModule
   ],
   bootstrap: [AppComponent]
 })

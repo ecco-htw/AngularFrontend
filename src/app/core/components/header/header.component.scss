@@ -5,6 +5,11 @@
   left: 0;
   z-index: 1000;
 }
-.mat-toolbar{
+
+.mat-toolbar {
   background-color: transparent;
+}
+
+.mat-button-toggle {
+  margin-right: 0.5em
 }

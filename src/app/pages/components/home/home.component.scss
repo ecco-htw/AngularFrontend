@@ -1,21 +1,24 @@
-h1{
+h1 {
   color: white;
 }
 
-h2{
+h2 {
   margin-top: 1.5em;
 }
 
-.jumbotron{
+.jumbotron {
   text-align: center;
   background-image: url("/assets/images/ocean-wave.jpg");
   background-size: cover;
 }
 
-.container{
+.container {
   padding-top: 5em;
 }
+.bottom {
+  padding-bottom: 10em;
+}
 
-.full-page{
+.full-page {
   background: antiquewhite;
 }

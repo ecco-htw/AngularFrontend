@@ -3,9 +3,13 @@
 </mat-toolbar>
 -->
 <mat-toolbar>
-  <mat-toolbar-row>
-    <button class="mat-icon-button">
-      home
-    </button>
+  <mat-toolbar-row class="justify-content-end">
+    <!-- Sets the home and map icons for navigation and adds routing properties-->
+    <mat-button-toggle class="mat-icon-button" routerLink="home">
+      <i class="mdi mdi-24px mdi-home"></i>
+    </mat-button-toggle>
+    <mat-button-toggle class="mat-icon-button" routerLink="">
+      <i class="mdi mdi-24px mdi-map"></i>
+    </mat-button-toggle>
   </mat-toolbar-row>
 </mat-toolbar>
