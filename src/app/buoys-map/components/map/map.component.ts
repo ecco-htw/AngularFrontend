@@ -1,14 +1,14 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { ID } from '@datorama/akita';
-import { BuoysMapQuery } from '../../queries/buoys-map.query';
-import { BuoysMapService } from '../../services/buoys-map.service';
-import { AntPathLayerService } from '../../services/leaflet/layers/ant-path-layer.service';
-import { EsriOceanBasemapTilesLayerService } from '../../services/leaflet/layers/esri-ocean-basemap-tiles-layer.service';
-import { GlifyMarkersLayerService } from '../../services/leaflet/layers/glify-markers-layer.service';
-import { HeatMapLayerService } from '../../services/leaflet/layers/heat-map-layer.service';
-import { LeafletService } from '../../services/leaflet/leaflet.service';
-import { PinMarkerService } from '../../services/leaflet/layers/pin-marker.service';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Router} from '@angular/router';
+import {ID} from '@datorama/akita';
+import {BuoysMapQuery} from '../../queries/buoys-map.query';
+import {BuoysMapService} from '../../services/buoys-map.service';
+import {AntPathLayerService} from '../../services/leaflet/layers/ant-path-layer.service';
+import {EsriOceanBasemapTilesLayerService} from '../../services/leaflet/layers/esri-ocean-basemap-tiles-layer.service';
+import {GlifyMarkersLayerService} from '../../services/leaflet/layers/glify-markers-layer.service';
+import {HeatMapLayerService} from '../../services/leaflet/layers/heat-map-layer.service';
+import {LeafletService} from '../../services/leaflet/leaflet.service';
+import {PinMarkerService} from '../../services/leaflet/layers/pin-marker.service';
 
 
 @Component({
@@ -16,7 +16,7 @@ import { PinMarkerService } from '../../services/leaflet/layers/pin-marker.servi
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, OnDestroy {
   @ViewChild('mapContainer') mapContainer: ElementRef;
 
   constructor(
@@ -31,26 +31,36 @@ export class MapComponent implements OnInit {
     private pinMarkerService: PinMarkerService
   ) {
     this.buoysMapService.loadBuoys();
-   
+
     this.pinMarkerService.onClick((point) => this.openBuoyDetails(point['id']));
     this.pinMarkerService.onNoPointClick(() => this.closeBuoyDetails());
 
-   // this.markersLayerService.onClick((e, point, xy) => this.openBuoyDetails(point['id']));
-   // this.markersLayerService.onNoPointClick(() => this.closeBuoyDetails());
+    // this.markersLayerService.onClick((e, point, xy) => this.openBuoyDetails(point['id']));
+    // this.markersLayerService.onNoPointClick(() => this.closeBuoyDetails());
   }
 
 
   ngOnInit() {
-    this.leafletService.init(this.mapContainer.nativeElement);
-    this.pinMarkerService.init();
-    this.esriOceanBasemapTilesLayerService.init();
-    //this.markersLayerService.init();
-    this.antPathLayerService.init();
-    this.heatMapLayer.init();
+      this.leafletService.init(this.mapContainer.nativeElement);
+      this.pinMarkerService.init();
+
+      // this.markersLayerService.init();
+      this.antPathLayerService.init();
+      this.heatMapLayer.init();
+      this.esriOceanBasemapTilesLayerService.init();
   }
 
+  ngOnDestroy() {
+    // this.pinMarkerService.hide();
+    this.antPathLayerService.hide();
+    this.heatMapLayer.hide();
+    this.esriOceanBasemapTilesLayerService.hide();
+  }
+
+
+
   openBuoyDetails(id: ID) {
-    //console.log(id);
+    // console.log(id);
     this.router.navigate(['/buoy', id, 'details']);
   }
 

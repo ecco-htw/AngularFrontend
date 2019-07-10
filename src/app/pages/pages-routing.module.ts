@@ -7,8 +7,7 @@ import {ImpressumComponent} from './components/impressum/impressum.component';
  * Provides routing for home page and impressum
  */
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent},
+  {path: '', component: HomeComponent, pathMatch: 'full'},
   {path: 'impressum', component: ImpressumComponent}
 ];
 

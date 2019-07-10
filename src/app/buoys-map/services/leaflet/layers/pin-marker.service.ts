@@ -1,15 +1,14 @@
-import { Injectable } from '@angular/core';
-import { combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { ID } from '@datorama/akita';
-import { BuoysMapQuery } from '../../../queries/buoys-map.query';
-import { LeafletService } from '../leaflet.service';
-import { LayerService } from './layer.service';
+import {Injectable} from '@angular/core';
+import {combineLatest} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {BuoysMapQuery} from '../../../queries/buoys-map.query';
+import {LeafletService} from '../leaflet.service';
+import {LayerService} from './layer.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PinMarkerService extends LayerService{
+export class PinMarkerService extends LayerService {
 
   private onClickFn = null;
   private onNoPointClickFn = null;
@@ -18,7 +17,6 @@ export class PinMarkerService extends LayerService{
   private popup = null;
   private marker = null;
 
-  
 
   constructor(
     private buoysMapQuery: BuoysMapQuery,
@@ -63,7 +61,7 @@ export class PinMarkerService extends LayerService{
               console.log('hello');
               console.log(point['id']);
               this.onClickFn(point);
-             });
+            });
 
           return point;
         }))
@@ -119,40 +117,38 @@ export class PinMarkerService extends LayerService{
       ]
     };
 
-      
-
-
-/*    
-    L.glify.shapes({
-      map: this.leafletService.getMap(),
-      data: wholeWorld,
-      click: this.onNoPointClickFn,
-      opacity: 0
-    });
 
     /*
-    this.layer = L.marker([ 46.8523, -121.7603 ], {
-      icon: icon({
-        iconSize: [ 25, 41 ],
-        iconAnchor: [ 13, 41 ],
-        iconUrl: 'leaflet/marker-icon.png',
-        shadowUrl: 'leaflet/marker-shadow.png'
-      })
-    });
-    
+        L.glify.shapes({
+          map: this.leafletService.getMap(),
+          data: wholeWorld,
+          click: this.onNoPointClickFn,
+          opacity: 0
+        });
 
-    
+        /*
+        this.layer = L.marker([ 46.8523, -121.7603 ], {
+          icon: icon({
+            iconSize: [ 25, 41 ],
+            iconAnchor: [ 13, 41 ],
+            iconUrl: 'leaflet/marker-icon.png',
+            shadowUrl: 'leaflet/marker-shadow.png'
+          })
+        });
 
-    //this.map = L.map(mapElement, mapOptions).setView(bounds.getCenter(), 3);
-    //var marker = L.marker([51.5, -0.09],{icon: this.pinicon}).addTo(this.leafletService.getMap());
-   // marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
 
-    /*
-    var markers = L.markerClusterGroup();
-    markers.addlayer(L.marker(marker.getRandomLatLng(this.map)));
-    this.map.addLayer(markers);
-    */
-    
+
+
+        //this.map = L.map(mapElement, mapOptions).setView(bounds.getCenter(), 3);
+        //var marker = L.marker([51.5, -0.09],{icon: this.pinicon}).addTo(this.leafletService.getMap());
+       // marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+
+        /*
+        var markers = L.markerClusterGroup();
+        markers.addlayer(L.marker(marker.getRandomLatLng(this.map)));
+        this.map.addLayer(markers);
+        */
+
     /*
     this.layer = L.glify.points({
       map: this.leafletService.getMap(),
@@ -164,7 +160,7 @@ export class PinMarkerService extends LayerService{
       className: 'glify-canvas'
     });
     */
-    
+
   }
 
   hide() {
