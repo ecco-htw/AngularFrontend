@@ -1,8 +1,8 @@
-<!-- Für die Ladeanimation und -nachricht -->
+<!-- For the loading animation -->
 <div *ngIf="(buoyDetailsLoading$ | async); else elseBlock">
 <mat-list>
   <mat-list-item>
-    
+
       <div class="loader"></div>
       <div id="loadText">
         <h6 class="headline">Bojendaten werden geladen</h6>
@@ -11,43 +11,32 @@
 </mat-list>
 </div>
 
-<!-- ng-template wird für die Fallunterscheidung als Container benötigt -->
+<!-- ng-template is necessary for distinction -->
 <ng-template #elseBlock>
- <mat-list>
-   <mat-list-item>
-     <table *ngIf="buoy$ | async as buoy">
-       <tbody>
-           <tr>
-             <th>ID </th>
-             <td>{{buoy.id}}</td>
-           </tr>
-     </tbody>
-    </table>
-   <!--
-   </mat-list-item>
-   <mat-divider></mat-divider>
-   <mat-list-item class="details-container">
-     <table *ngIf="buoy$ | async as buoy">
-       <tbody>
-       <tr>
-         <th>ID</th>
-         <td>{{buoy.id}}</td>
-       </tr>
-       Zeigt keine Werte, vielleicht später fixen
-       <tr>
-         <th>Longitude</th>
-         <td>{{buoy.longitude}}</td>
-       </tr>
-       <tr>
-         <th>Latitude</th>
-         <td>{{buoy.latitude}}</td>
-       </tr>
-       
-       </tbody>
-     </table>
-   -->
-   </mat-list-item>
-   <mat-divider></mat-divider>
+  <mat-list>
+    <mat-list-item>Details</mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item class="details-container">
+      <table *ngIf="buoy$ | async as buoy">
+        <tbody>
+        <tr>
+          <th>ID</th>
+          <td>{{buoy.id}}</td>
+        </tr>
+        <!-- Doesn't show values, fix later (perhaps)
+        <tr>
+          <th>Longitude</th>
+          <td>{{buoy.longitude}}</td>
+        </tr>
+        <tr>
+          <th>Latitude</th>
+          <td>{{buoy.latitude}}</td>
+        </tr>
+        -->
+        </tbody>
+      </table>
+    </mat-list-item>
+    <mat-divider></mat-divider>
 
    <mat-list-item>Temperatur [°C]</mat-list-item>
    <mat-divider></mat-divider>

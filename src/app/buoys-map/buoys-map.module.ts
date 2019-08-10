@@ -28,9 +28,6 @@ import { BuoysMapRoutingModule } from './buoys-map-routing.module';
     SwitchLayersComponent,
     ClosePathButtonComponent
   ],
-  exports: [
-    MapComponent
-  ],
   entryComponents: [
     FilterBuoysComponent,
     SwitchLayersComponent
