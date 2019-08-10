@@ -44,10 +44,10 @@ export class MapComponent implements OnInit {
   }
 
   openBuoyDetails(id: ID) {
-    this.router.navigate(['/buoy', id, 'details']);
+    this.router.navigate(['/map/buoy', id, 'details']);
   }
 
   closeBuoyDetails() {
-    this.router.navigate(['/']);
+    this.router.navigate(['/map']);
   }
 }
