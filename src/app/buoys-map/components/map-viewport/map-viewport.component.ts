@@ -45,11 +45,11 @@ export class MapViewportComponent implements OnInit {
 
   @HostListener('document:keydown.escape')
   onEscape() {
-    this.router.navigate(['/map']);
+    this.router.navigate(['/']);
   }
 
   onSidenavClose() {
-    this.router.navigate(['/map']);
+    this.router.navigate(['/']);
   }
 
   onShowPathLayer() {

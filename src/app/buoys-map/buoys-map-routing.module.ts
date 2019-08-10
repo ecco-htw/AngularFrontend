@@ -1,11 +1,12 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {BuoyDetailsComponent} from './components/buoy-details/buoy-details.component';
-import {MapViewportComponent} from './components/map-viewport/map-viewport.component';
-import {SidenavGuard} from './guards/sidenav.guard';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { BuoyDetailsComponent } from './components/buoy-details/buoy-details.component';
+import { MapViewportComponent } from './components/map-viewport/map-viewport.component';
+import { SidenavGuard } from './guards/sidenav.guard';
 
 const routes: Routes = [
-  { path: '',
+  {
+    path: '',
     component: MapViewportComponent,
     children: [
       {

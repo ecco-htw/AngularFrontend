@@ -1,17 +1,11 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import * as path from 'path';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: './pages/pages.module#PagesModule'
-  },
-  {
-    path: 'map',
     loadChildren: './buoys-map/buoys-map.module#BuoysMapModule'
   }
-
 ];
 
 @NgModule({

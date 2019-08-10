@@ -17,32 +17,6 @@ mat-list-item.chart-list-item {
   margin-bottom: 1rem;
 }
 
-//Loader presentation
-.loader {
-  //Loader position
-  position: absolute;
-  left: 35%;
-  top: 8%;
-  //Thickness of the circle and the circling
-  border: 5px solid #f3f3f3; /* Light grey */
-  border-top: 5px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  animation: spin 2s linear infinite;
-}
-//Circling animation
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-//Text positioning
-#loadText {
-  text-align: center;
-  position: absolute;
-  top: 10%;
-  margin-top: 5%;
-}
 
 ::ng-deep ngx-charts-line-chart {
   text {
@@ -54,6 +28,7 @@ mat-list-item.chart-list-item {
   margin: 0.25rem;
   text-transform: uppercase;
 }
+
 
 table {
   width: 100%;
