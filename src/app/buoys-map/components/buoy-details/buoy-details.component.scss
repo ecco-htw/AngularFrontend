@@ -21,7 +21,7 @@ mat-list-item.chart-list-item {
 .loader {
   //Loader position
   position: absolute;
-  left: 40%;
+  left: 50%;
   top: 8%;
   //Thickness of the circle and the circling
   border: 5px solid #f3f3f3; /* Light grey */
@@ -42,6 +42,8 @@ mat-list-item.chart-list-item {
   position: absolute;
   top: 10%;
   margin-top: 5%;
+  left: 0;
+  width: 100%;
 }
 
 ::ng-deep ngx-charts-line-chart {

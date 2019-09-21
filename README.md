@@ -14,7 +14,7 @@ Er beinhaltet die nicht optimierte Version des Frontends und hat ein Hot-Reload-
 ## Production Server
 
 Dieser wird auf dem Server der HTW gestartet und beinhaltet eine compilierte und produktionsfähige Version.
-Er wird über den Befehl `npm run start:prod` gestartet.
+Er wird über die Befehle `npm run build` und `npm run start:prod` gestartet.
 
 ## Weitere Befehle
 
