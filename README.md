@@ -44,3 +44,7 @@ verwendet. Welches die Punkte mit WebGL auf die Karte rendert. Für das Plugin s
 in das Projekt hat sich als schwierig erwießen. Das Git-Repository wird geclont und wird danach noch gebuildet. Hier könnte ggf.
 über ein alternatives Plugin, welches eine offzieles npm Package zur Verfügung stellt, nachgedacht werden. 
 Außerdem unerstüzt Leaflet.glify keinen Mouseover-Effekt. Somit ist es nicht möglich zu sehen wann die Maus über eine Boje bewegt wird. 
+
+### Update SoSe 2019
+
+Anstelle des glify Plugins wurden die von Leaflet bereitgestellten Marker getestet. Sie unterstützen Mausevents, sowie Popups. Die Darstellung dieser Marker ist allerdings deutlich rechenintensiver und bei der momentanen Menge von darzustellenden Datensätzen nicht praktikabel. Eine mögliche Lösung wäre es die Menge der dargestellten Marker zu filtern. Eine Filterung könnte zum Beispiel nach Datum, Tiefe oder Lokalisation stattfinden. Eine mögliche Ergänzung zum Projekt wäre das Leaflet Plugin, das es ermöglicht Marker zu [Clustern](https://github.com/Leaflet/Leaflet.markercluster) zusammen zu führen. Der Masterbranch nutzt die von der vorherigen Gruppe implementierten glify Plugins. Der markerBranch zeigt eine mögliche Implementierung der Standard Leaflet Marker mit einem Limit in der Darstellung von Markern als Workaround. 
