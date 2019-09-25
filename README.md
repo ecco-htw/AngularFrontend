@@ -20,6 +20,9 @@ Er wird über die Befehle `npm run build` und `npm run start:prod` gestartet.
 
 Weitere Befehle können in der Datei **package.json** gefunden werden.
 
+## Server, Zugänge und Umgang mit Screen
+
+Informationen zu genutzen Servern, sowie nötige Zugänge und Umgang mit Screen sind im readme der [Datenverarbeitung](https://github.com/ecco-htw/Datenverarbeitung) angegeben.
 
 ## Code
 
