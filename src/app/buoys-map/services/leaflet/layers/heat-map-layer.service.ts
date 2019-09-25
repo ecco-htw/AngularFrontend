@@ -21,7 +21,7 @@ export class HeatMapLayerService extends LayerService {
       useLocalExtrema: true,
       latField: 'latitude',
       lngField: 'longitude',
-      valueField: 'saltiness'
+      valueField: 'temperature'
     });
 
     this.buoysMapQuery

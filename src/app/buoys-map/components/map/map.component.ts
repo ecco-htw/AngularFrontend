@@ -32,9 +32,10 @@ export class MapComponent implements OnInit {
   ) {
     this.buoysMapService.loadBuoys();
    
+    // PinMarkerService Option. Comment out and use markersLayerService for old version.
+
     this.pinMarkerService.onClick((point) => this.openBuoyDetails(point['id']));
     this.pinMarkerService.onNoPointClick(() => this.closeBuoyDetails());
-
    // this.markersLayerService.onClick((e, point, xy) => this.openBuoyDetails(point['id']));
    // this.markersLayerService.onNoPointClick(() => this.closeBuoyDetails());
   }
@@ -42,11 +43,14 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.leafletService.init(this.mapContainer.nativeElement);
-    this.pinMarkerService.init();
     this.esriOceanBasemapTilesLayerService.init();
-    //this.markersLayerService.init();
     this.antPathLayerService.init();
     this.heatMapLayer.init();
+
+    // PinMarkerService Option. Comment out and use markersLayerService for old version.
+    
+    this.pinMarkerService.init();
+    //this.markersLayerService.init();
   }
 
   openBuoyDetails(id: ID) {

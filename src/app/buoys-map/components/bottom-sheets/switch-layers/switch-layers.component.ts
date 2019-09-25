@@ -4,6 +4,10 @@ import { Observable } from 'rxjs';
 import { BuoysMapQuery } from '../../../queries/buoys-map.query';
 import { BuoysMapService } from '../../../services/buoys-map.service';
 
+/**
+ * Allows switching layers: SaltinessHeadMap/ marker. Marker visibility is not changeable 
+ * at the moment. 
+ */
 @Component({
   selector: 'app-switch-layers',
   templateUrl: './switch-layers.component.html',
@@ -28,8 +32,10 @@ export class SwitchLayersComponent implements OnInit {
     this.buoysMapService.updateSaltinessLayerVisibility(event.checked);
   }
 
+  
   onMakersLayerVisibilityChange(event: MatSlideToggleChange) {
     this.buoysMapService.updateMarkersLayerVisibility(event.checked);
   }
+
 
 }

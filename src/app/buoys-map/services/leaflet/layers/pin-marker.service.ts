@@ -6,6 +6,13 @@ import { BuoysMapQuery } from '../../../queries/buoys-map.query';
 import { LeafletService } from '../leaflet.service';
 import { LayerService } from './layer.service';
 
+
+/**
+ * Service to generate clickable marker for each bouy. Uses pinmarker.png file which may be replaced
+ * by a svg image for quicker rendering. Currently the marker rendering became very slow, cause isn't clear yet.
+ * The idea was to render sets of ~ 150 marker at a time. But this leads to a visible delay. 
+ * Better may be the usage of a markercluster: https://github.com/Leaflet/Leaflet.markercluster 
+ */
 @Injectable({
   providedIn: 'root'
 })
@@ -17,8 +24,10 @@ export class PinMarkerService extends LayerService{
   private pinicon = null;
   private popup = null;
   private marker = null;
+  private markergroup = null;
 
-  
+  // Limits number of markers rendered for troubleshoot.
+  private counter = 0;
 
   constructor(
     private buoysMapQuery: BuoysMapQuery,
@@ -26,7 +35,10 @@ export class PinMarkerService extends LayerService{
   ) {
     super(leafletService, buoysMapQuery.selectMarkersLayerVisibility$);
 
-
+/**
+ * Load icon and adjust hight and position. There is a slight offset
+ * with the current settings. (Stranded bouy in Somalia)
+ */
     this.pinicon = L.icon({
       iconUrl: 'assets/images/pinmarker.png',
       iconSize: [8, 8],
@@ -43,6 +55,7 @@ export class PinMarkerService extends LayerService{
     this.onNoPointClickFn = onNoPointClickFn;
   }
 
+  
   init() {
     combineLatest([
       this.buoysMapQuery.selectAll().pipe(
@@ -50,21 +63,22 @@ export class PinMarkerService extends LayerService{
 
           const point = [buoy.coordinates.latitude, buoy.coordinates.longitude];
           point['id'] = buoy.id;
+          
+          // Limit for marker rendering workaround.
+          if(this.counter <= 500)  {
 
-          this.marker = L.marker(
-            [buoy.coordinates.latitude, buoy.coordinates.longitude],
-            {icon: this.pinicon})
-            .addTo(this.leafletService.getMap())
-            .bindPopup('Hi am am buoy ' + buoy.id + ' @ ' + buoy.coordinates.latitude + ' / ' + buoy.coordinates.longitude)
-            //.on('click', this.router.navigate(['/buoy', buoy.id, 'details']));
-            //.on('click', this.onClickFn(1, point, 2));
-            //.on('mouseover', console.log('hi'));
-            .on('click', () => {
-              console.log('hello');
-              console.log(point['id']);
-              this.onClickFn(point);
-             });
+            this.marker = L.marker(
+              [buoy.coordinates.latitude, buoy.coordinates.longitude],
+              {icon: this.pinicon})
+              .addTo(this.leafletService.getMap())
+              //.bindPopup('Hi am am buoy ' + buoy.id + ' @ ' + buoy.coordinates.latitude + ' / ' + buoy.coordinates.longitude)
+              .on('click', () => {
+                //console.log('hello');
+                //console.log(point['id']);
+                this.onClickFn(point);
+              });
 
+          } this.counter++;
           return point;
         }))
       ),
@@ -80,6 +94,10 @@ export class PinMarkerService extends LayerService{
     });
 
   }
+
+  // Old version of glify marker, which are unclickable and super odd to use. See master branch for demo.
+
+ /* 
 
   show() {
     const wholeWorld = {
@@ -119,10 +137,7 @@ export class PinMarkerService extends LayerService{
       ]
     };
 
-      
 
-
-/*    
     L.glify.shapes({
       map: this.leafletService.getMap(),
       data: wholeWorld,
@@ -140,19 +155,6 @@ export class PinMarkerService extends LayerService{
       })
     });
     
-
-    
-
-    //this.map = L.map(mapElement, mapOptions).setView(bounds.getCenter(), 3);
-    //var marker = L.marker([51.5, -0.09],{icon: this.pinicon}).addTo(this.leafletService.getMap());
-   // marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-
-    /*
-    var markers = L.markerClusterGroup();
-    markers.addlayer(L.marker(marker.getRandomLatLng(this.map)));
-    this.map.addLayer(markers);
-    */
-    
     /*
     this.layer = L.glify.points({
       map: this.leafletService.getMap(),
@@ -165,9 +167,10 @@ export class PinMarkerService extends LayerService{
     });
     */
     
-  }
-
+  
+/*
   hide() {
     this.layer.remove();
   }
+*/
 }
