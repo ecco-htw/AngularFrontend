@@ -54,6 +54,6 @@ export class MapViewportComponent implements OnInit {
 
   onShowPathLayer() {
     const id = this.routerQuery.getValue().state.root.paramMap.get('id');
-    this.router.navigate(['/buoy', id, 'path']);
+    this.router.navigate(['/map/buoy', id, 'path']);
   }
 }

@@ -23,6 +23,6 @@ export class ClosePathButtonComponent implements OnInit {
 
   onClick() {
     const id = this.routerQuery.getValue().state.root.paramMap.get('id');
-    this.router.navigate(['/buoy', id, 'details']);
+    this.router.navigate(['/map/buoy', id, 'details']);
   }
 }
